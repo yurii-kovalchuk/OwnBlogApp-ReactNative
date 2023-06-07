@@ -1,11 +1,14 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import bg from "./images/BG.jpg";
+
+import RegistrationScreen from "./Screens/RegistrationScreen";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>This is OwnBlog App</Text>
-      <StatusBar style="auto" />
+      <ImageBackground source={bg} style={styles.image}>
+        <RegistrationScreen />
+      </ImageBackground>
     </View>
   );
 }
@@ -13,8 +16,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "flex-end",
   },
 });
