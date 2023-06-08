@@ -1,11 +1,7 @@
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { useState } from "react";
+
+import styles from "../styles/authForm.styles";
 
 const RegistrationScreen = () => {
   const [whichFocused, setWichFocused] = useState(null);
@@ -23,7 +19,7 @@ const RegistrationScreen = () => {
     <View style={styles.form}>
       <View></View>
       <Text style={styles.title}>Реєстрація</Text>
-      <View style={{ marginBottom: 43 }}>
+      <View style={{ marginBottom: 33 }}>
         <TextInput
           style={[
             styles.input,
@@ -71,59 +67,59 @@ const RegistrationScreen = () => {
 
 export default RegistrationScreen;
 
-const styles = StyleSheet.create({
-  form: {
-    paddingTop: 92,
-    paddingBottom: 45,
-    paddingHorizontal: 16,
-    backgroundColor: "#FFFFFF",
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-  },
-  title: {
-    marginBottom: 32,
-    fontFamily: "Roboto",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: 30,
-    lineHeight: 35,
-    textAlign: "center",
-    letterSpacing: 0.01,
-    color: "#212121",
-  },
-  input: {
-    padding: 16,
-    marginBottom: 16,
-    backgroundColor: "#F6F6F6",
-    color: "#212121",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "#E8E8E8",
-    fontSize: 16,
-    fontFamily: "Roboto",
-    lineHeight: 19,
-  },
-  inputOnFocus: {
-    borderColor: "#FF6C00",
-  },
-  btn: {
-    marginBottom: 16,
-    justifyContent: "center",
-    alignItems: "center",
-    height: 51,
-    backgroundColor: "#FF6C00",
-    borderRadius: 100,
-    fontFamily: "Roboto",
-    fontSize: 16,
-    fontWeight: 400,
-    lineHeight: 19,
-  },
-  subText: {
-    fontFamily: "Roboto",
-    fontSize: 16,
-    fontWeight: 400,
-    lineHeight: 19,
-    textAlign: "center",
-  },
-});
+// const styles = StyleSheet.create({
+//   form: {
+//     paddingTop: 92,
+//     paddingBottom: 45,
+//     paddingHorizontal: 16,
+//     backgroundColor: "#FFFFFF",
+//     borderTopLeftRadius: 25,
+//     borderTopRightRadius: 25,
+//   },
+//   title: {
+//     marginBottom: 32,
+//     fontFamily: "Roboto",
+//     fontStyle: "normal",
+//     fontWeight: 500,
+//     fontSize: 30,
+//     lineHeight: 35,
+//     textAlign: "center",
+//     letterSpacing: 0.01,
+//     color: "#212121",
+//   },
+//   input: {
+//     padding: 16,
+//     marginBottom: 16,
+//     backgroundColor: "#F6F6F6",
+//     color: "#212121",
+//     borderRadius: 8,
+//     borderWidth: 1,
+//     borderStyle: "solid",
+//     borderColor: "#E8E8E8",
+//     fontSize: 16,
+//     fontFamily: "Roboto",
+//     lineHeight: 19,
+//   },
+//   inputOnFocus: {
+//     borderColor: "#FF6C00",
+//   },
+//   btn: {
+//     marginBottom: 16,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     height: 51,
+//     backgroundColor: "#FF6C00",
+//     borderRadius: 100,
+//     fontFamily: "Roboto",
+//     fontSize: 16,
+//     fontWeight: 400,
+//     lineHeight: 19,
+//   },
+//   subText: {
+//     fontFamily: "Roboto",
+//     fontSize: 16,
+//     fontWeight: 400,
+//     lineHeight: 19,
+//     textAlign: "center",
+//   },
+// });
