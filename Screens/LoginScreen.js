@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { useState } from "react";
 
-import styles from "../styles/authForm.styles";
+import styles from "../styles/authStyles";
 
 const LoginScreen = () => {
   const [whichFocused, setWichFocused] = useState(null);
@@ -45,7 +45,7 @@ const LoginScreen = () => {
         />
       </View>
       <TouchableOpacity style={styles.btn} activeOpacity={0.8}>
-        <Text style={{ color: "#ffffff" }}>Зареєструватися</Text>
+        <Text style={{ color: "#ffffff" }}>Увійти</Text>
       </TouchableOpacity>
       <Text style={styles.subText}>
         Немає акаунту?{" "}

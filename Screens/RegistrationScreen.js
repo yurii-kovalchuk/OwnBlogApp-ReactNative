@@ -1,7 +1,15 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import { useState } from "react";
 
-import styles from "../styles/authForm.styles";
+import authStyles from "../styles/authStyles";
+import AddIcon from "../add.svg";
 
 const RegistrationScreen = () => {
   const [whichFocused, setWichFocused] = useState(null);
@@ -17,7 +25,12 @@ const RegistrationScreen = () => {
   };
   return (
     <View style={styles.form}>
-      <View></View>
+      <View style={styles.avatarWrap}>
+        <Image style={styles.avatar}></Image>
+        <TouchableOpacity style={styles.addBtn} activeOpacity={0.7}>
+          <AddIcon width={25} height={25} />
+        </TouchableOpacity>
+      </View>
       <Text style={styles.title}>Реєстрація</Text>
       <View style={{ marginBottom: 33 }}>
         <TextInput
@@ -67,59 +80,23 @@ const RegistrationScreen = () => {
 
 export default RegistrationScreen;
 
-// const styles = StyleSheet.create({
-//   form: {
-//     paddingTop: 92,
-//     paddingBottom: 45,
-//     paddingHorizontal: 16,
-//     backgroundColor: "#FFFFFF",
-//     borderTopLeftRadius: 25,
-//     borderTopRightRadius: 25,
-//   },
-//   title: {
-//     marginBottom: 32,
-//     fontFamily: "Roboto",
-//     fontStyle: "normal",
-//     fontWeight: 500,
-//     fontSize: 30,
-//     lineHeight: 35,
-//     textAlign: "center",
-//     letterSpacing: 0.01,
-//     color: "#212121",
-//   },
-//   input: {
-//     padding: 16,
-//     marginBottom: 16,
-//     backgroundColor: "#F6F6F6",
-//     color: "#212121",
-//     borderRadius: 8,
-//     borderWidth: 1,
-//     borderStyle: "solid",
-//     borderColor: "#E8E8E8",
-//     fontSize: 16,
-//     fontFamily: "Roboto",
-//     lineHeight: 19,
-//   },
-//   inputOnFocus: {
-//     borderColor: "#FF6C00",
-//   },
-//   btn: {
-//     marginBottom: 16,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     height: 51,
-//     backgroundColor: "#FF6C00",
-//     borderRadius: 100,
-//     fontFamily: "Roboto",
-//     fontSize: 16,
-//     fontWeight: 400,
-//     lineHeight: 19,
-//   },
-//   subText: {
-//     fontFamily: "Roboto",
-//     fontSize: 16,
-//     fontWeight: 400,
-//     lineHeight: 19,
-//     textAlign: "center",
-//   },
-// });
+const styles = StyleSheet.create({
+  ...authStyles,
+  avatarWrap: {
+    position: "absolute",
+    top: -60,
+    left: "50%",
+    transform: [{ translateX: -50 }],
+  },
+  avatar: {
+    width: 120,
+    height: 120,
+    borderRadius: 16,
+    backgroundColor: "#F6F6F6",
+  },
+  addBtn: {
+    position: "absolute",
+    bottom: 14,
+    right: -12,
+  },
+});
