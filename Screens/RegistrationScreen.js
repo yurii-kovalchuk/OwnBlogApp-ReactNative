@@ -9,20 +9,33 @@ import {
 import { useState } from "react";
 
 import authStyles from "../styles/authStyles";
-import AddIcon from "../add.svg";
+import AddIcon from "../icons/add.svg";
+
+const emptyState = {
+  login: "",
+  email: "",
+  password: "",
+};
 
 const RegistrationScreen = () => {
-  const [whichFocused, setWichFocused] = useState(null);
+  const [whichInputFocused, setWhichInputFocused] = useState(null);
+  const [formData, setFormData] = useState(emptyState);
 
-  const onFocus = (e) => {
-    setWichFocused(
+  const onInputFocus = (e) => {
+    setWhichInputFocused(
       e.target._internalFiberInstanceHandleDEV.memoizedProps.query
     );
   };
 
-  const onBlur = (e) => {
-    setWichFocused(null);
+  const onInputBlur = (e) => {
+    setWhichInputFocused(null);
   };
+
+  const onSubmit = () => {
+    console.log(formData);
+    setFormData(emptyState);
+  };
+
   return (
     <View style={styles.form}>
       <View style={styles.avatarWrap}>
@@ -36,41 +49,56 @@ const RegistrationScreen = () => {
         <TextInput
           style={[
             styles.input,
-            // { borderColor: wichFocused === "first" ? "#FF6C00" : "#E8E8E8" },
-            whichFocused === "first" && styles.inputOnFocus,
+            whichInputFocused === "login" && styles.inputOnFocus,
           ]}
           placeholder="Логін"
           placeholderTextColor="#BDBDBD"
-          onFocus={onFocus}
-          onBlur={onBlur}
-          query="first"
+          query="login"
+          onFocus={onInputFocus}
+          onBlur={onInputBlur}
+          onChangeText={(value) =>
+            setFormData((prevState) => ({ ...prevState, login: value }))
+          }
+          value={formData.login}
         />
         <TextInput
           style={[
             styles.input,
-            whichFocused === "second" && styles.inputOnFocus,
+            whichInputFocused === "email" && styles.inputOnFocus,
           ]}
           placeholder="Адреса електронної пошти"
           placeholderTextColor="#BDBDBD"
-          onFocus={onFocus}
-          onBlur={onBlur}
-          query="second"
+          query="email"
+          onFocus={onInputFocus}
+          onBlur={onInputBlur}
+          onChangeText={(value) =>
+            setFormData((prevState) => ({ ...prevState, email: value }))
+          }
+          value={formData.email}
         />
         <TextInput
           style={[
             styles.input,
             { marginBottom: 0 },
-            whichFocused === "third" && styles.inputOnFocus,
+            whichInputFocused === "password" && styles.inputOnFocus,
           ]}
           placeholder="Пароль"
           placeholderTextColor="#BDBDBD"
           secureTextEntry={true}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          query="third"
+          query="password"
+          onFocus={onInputFocus}
+          onBlur={onInputBlur}
+          onChangeText={(value) =>
+            setFormData((prevState) => ({ ...prevState, password: value }))
+          }
+          value={formData.password}
         />
       </View>
-      <TouchableOpacity style={styles.btn} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.btn}
+        activeOpacity={0.8}
+        onPress={onSubmit}
+      >
         <Text style={{ color: "#ffffff" }}>Зареєструватися</Text>
       </TouchableOpacity>
       <Text style={styles.subText}>Вже є акаунт? Увійти</Text>
