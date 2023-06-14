@@ -11,7 +11,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 
 import bg from "../images/BG.jpg";
 import AddIcon from "../icons/add.svg";
@@ -27,20 +27,6 @@ const RegistrationScreen = () => {
   const [formData, setFormData] = useState(emptyState);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
 
-  useEffect(() => {
-    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
-      setIsShowKeyboard(true);
-    });
-    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
-      setIsShowKeyboard(false);
-    });
-
-    return () => {
-      showSubscription.remove();
-      hideSubscription.remove();
-    };
-  }, []);
-
   const onInputFocus = (e) => {
     setWhichInputFocused(
       e.target._internalFiberInstanceHandleDEV.memoizedProps.query
@@ -48,13 +34,14 @@ const RegistrationScreen = () => {
     setIsShowKeyboard(true);
   };
 
-  const onInputBlur = (e) => {
+  const onInputBlur = () => {
     setWhichInputFocused(null);
+    setIsShowKeyboard(false);
   };
 
   const closeKeyboard = () => {
-    Keyboard.dismiss();
     setIsShowKeyboard(false);
+    Keyboard.dismiss();
   };
 
   const onSubmit = () => {
@@ -65,7 +52,7 @@ const RegistrationScreen = () => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === "ios" ? "padding" : ""}
       style={styles.container}
     >
       <TouchableWithoutFeedback onPress={closeKeyboard}>
