@@ -11,7 +11,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import bg from "../images/BG.jpg";
 import AddIcon from "../icons/add.svg";
@@ -26,6 +26,7 @@ const RegistrationScreen = () => {
   const [whichInputFocused, setWhichInputFocused] = useState(null);
   const [formData, setFormData] = useState(emptyState);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
 
   const onInputFocus = (e) => {
     setWhichInputFocused(
@@ -113,7 +114,7 @@ const RegistrationScreen = () => {
                   ]}
                   placeholder="Пароль"
                   placeholderTextColor="#BDBDBD"
-                  secureTextEntry={true}
+                  secureTextEntry={secureTextEntry}
                   query="password"
                   onFocus={onInputFocus}
                   onBlur={onInputBlur}
@@ -125,6 +126,25 @@ const RegistrationScreen = () => {
                   }
                   value={formData.password}
                 />
+                {secureTextEntry ? (
+                  <Text
+                    style={styles.showPass}
+                    onPress={() => {
+                      setSecureTextEntry(false);
+                    }}
+                  >
+                    Показати
+                  </Text>
+                ) : (
+                  <Text
+                    style={styles.showPass}
+                    onPress={() => {
+                      setSecureTextEntry(true);
+                    }}
+                  >
+                    Приховати
+                  </Text>
+                )}
               </View>
               <TouchableOpacity
                 style={styles.btn}
@@ -173,6 +193,7 @@ const styles = StyleSheet.create({
     color: "#212121",
   },
   input: {
+    height: 50,
     padding: 16,
     marginBottom: 16,
     backgroundColor: "#F6F6F6",
@@ -187,6 +208,16 @@ const styles = StyleSheet.create({
   },
   inputOnFocus: {
     borderColor: "#FF6C00",
+  },
+  showPass: {
+    position: "absolute",
+    bottom: 16,
+    right: 16,
+
+    fontSize: 16,
+    fontFamily: "Roboto",
+    lineHeight: 19,
+    color: "#1B4371",
   },
   btn: {
     marginBottom: 16,
