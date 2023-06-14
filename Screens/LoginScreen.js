@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
-  ImageBackground,
+  Image,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
@@ -34,7 +34,6 @@ const LoginScreen = () => {
 
   const onInputBlur = () => {
     setWhichInputFocused(null);
-    setIsShowKeyboard(false);
   };
 
   const closeKeyboard = () => {
@@ -55,86 +54,85 @@ const LoginScreen = () => {
     >
       <TouchableWithoutFeedback onPress={closeKeyboard}>
         <View style={styles.container}>
-          <ImageBackground source={bg} style={styles.image}>
-            <View
-              style={[styles.form, { marginBottom: isShowKeyboard ? -208 : 0 }]}
-            >
-              <Text style={styles.title}>Увійти</Text>
-              <View style={{ marginBottom: 43 }}>
-                <TextInput
-                  style={[
-                    styles.input,
-                    whichInputFocused === "email" && styles.inputOnFocus,
-                  ]}
-                  placeholder="Адреса електронної пошти"
-                  placeholderTextColor="#BDBDBD"
-                  query="email"
-                  onFocus={onInputFocus}
-                  onBlur={onInputBlur}
-                  onChangeText={(value) =>
-                    setFormData((prevState) => ({
-                      ...prevState,
-                      email: value,
-                    }))
-                  }
-                  value={formData.email}
-                />
-                <TextInput
-                  style={[
-                    styles.input,
-                    { marginBottom: 0 },
-                    whichInputFocused === "password" && styles.inputOnFocus,
-                  ]}
-                  placeholder="Пароль"
-                  placeholderTextColor="#BDBDBD"
-                  secureTextEntry={secureTextEntry}
-                  query="password"
-                  onFocus={onInputFocus}
-                  onBlur={onInputBlur}
-                  onChangeText={(value) =>
-                    setFormData((prevState) => ({
-                      ...prevState,
-                      password: value,
-                    }))
-                  }
-                  value={formData.password}
-                />
-                {secureTextEntry ? (
-                  <Text
-                    style={styles.showPass}
-                    onPress={() => {
-                      setSecureTextEntry(false);
-                    }}
-                  >
-                    Показати
-                  </Text>
-                ) : (
-                  <Text
-                    style={styles.showPass}
-                    onPress={() => {
-                      setSecureTextEntry(true);
-                    }}
-                  >
-                    Приховати
-                  </Text>
-                )}
-              </View>
-
-              <TouchableOpacity
-                style={styles.btn}
-                activeOpacity={0.8}
-                onPress={onSubmit}
-              >
-                <Text style={{ color: "#ffffff" }}>Увійти</Text>
-              </TouchableOpacity>
-              <Text style={styles.subText}>
-                Немає акаунту?{" "}
-                <Text style={{ textDecorationLine: "underline" }}>
-                  Зареєструватися
+          <Image source={bg} style={styles.bgImage} />
+          <View
+            style={[styles.form, { marginBottom: isShowKeyboard ? -208 : 0 }]}
+          >
+            <Text style={styles.title}>Увійти</Text>
+            <View style={{ marginBottom: 43 }}>
+              <TextInput
+                style={[
+                  styles.input,
+                  whichInputFocused === "email" && styles.inputOnFocus,
+                ]}
+                placeholder="Адреса електронної пошти"
+                placeholderTextColor="#BDBDBD"
+                query="email"
+                onFocus={onInputFocus}
+                onBlur={onInputBlur}
+                onChangeText={(value) =>
+                  setFormData((prevState) => ({
+                    ...prevState,
+                    email: value,
+                  }))
+                }
+                value={formData.email}
+              />
+              <TextInput
+                style={[
+                  styles.input,
+                  { marginBottom: 0 },
+                  whichInputFocused === "password" && styles.inputOnFocus,
+                ]}
+                placeholder="Пароль"
+                placeholderTextColor="#BDBDBD"
+                secureTextEntry={secureTextEntry}
+                query="password"
+                onFocus={onInputFocus}
+                onBlur={onInputBlur}
+                onChangeText={(value) =>
+                  setFormData((prevState) => ({
+                    ...prevState,
+                    password: value,
+                  }))
+                }
+                value={formData.password}
+              />
+              {secureTextEntry ? (
+                <Text
+                  style={styles.showPass}
+                  onPress={() => {
+                    setSecureTextEntry(false);
+                  }}
+                >
+                  Показати
                 </Text>
-              </Text>
+              ) : (
+                <Text
+                  style={styles.showPass}
+                  onPress={() => {
+                    setSecureTextEntry(true);
+                  }}
+                >
+                  Приховати
+                </Text>
+              )}
             </View>
-          </ImageBackground>
+
+            <TouchableOpacity
+              style={styles.btn}
+              activeOpacity={0.8}
+              onPress={onSubmit}
+            >
+              <Text style={{ color: "#ffffff" }}>Увійти</Text>
+            </TouchableOpacity>
+            <Text style={styles.subText}>
+              Немає акаунту?{" "}
+              <Text style={{ textDecorationLine: "underline" }}>
+                Зареєструватися
+              </Text>
+            </Text>
+          </View>
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -144,11 +142,14 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  image: {
-    flex: 1,
-    resizeMode: "cover",
     justifyContent: "flex-end",
+  },
+  bgImage: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    resizeMode: "cover",
   },
   form: {
     paddingTop: 32,
