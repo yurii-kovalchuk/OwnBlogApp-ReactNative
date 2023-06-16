@@ -2,7 +2,6 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
   TouchableOpacity,
   TextInput,
   ImageBackground,
@@ -10,7 +9,7 @@ import {
 
 const CreatePostsScreen = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <View>
         <ImageBackground>
           <TouchableOpacity>Icon</TouchableOpacity>
@@ -25,7 +24,7 @@ const CreatePostsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  containet: {
+  container: {
     flex: 1,
     justifyContent: "flex-start",
     paddingHorizontal: 16,
