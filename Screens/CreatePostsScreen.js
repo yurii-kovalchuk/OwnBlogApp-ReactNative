@@ -12,13 +12,17 @@ const CreatePostsScreen = () => {
     <View style={styles.container}>
       <View>
         <ImageBackground>
-          <TouchableOpacity>Icon</TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Icon</Text>
+          </TouchableOpacity>
         </ImageBackground>
         <Text>Завантажте фото</Text>
       </View>
       <TextInput placeholder="Назва..." />
       <TextInput placeholder="Місцевість..." />
-      <TouchableOpacity>Опубліковати</TouchableOpacity>
+      <TouchableOpacity>
+        <Text>Опубліковати</Text>
+      </TouchableOpacity>
     </View>
   );
 };

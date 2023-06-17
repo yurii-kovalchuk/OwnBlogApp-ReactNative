@@ -1,5 +1,7 @@
 import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
+
 import bg from "../images/BG.jpg";
+import AddIcon from "../icons/add.svg";
 
 const ProfileScreen = () => {
   return (

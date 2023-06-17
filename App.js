@@ -5,31 +5,32 @@ import { createStackNavigator } from "@react-navigation/stack";
 import RegistrationScreen from "./Screens/RegistrationScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import Home from "./Screens/Home";
-import PostsScreen from "./Screens/PostsScreen";
 
-const MainStack = createStackNavigator();
+const AuthStack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <MainStack.Navigator>
-        <MainStack.Screen
+      <AuthStack.Navigator>
+        <AuthStack.Screen
           name="Registration"
           component={RegistrationScreen}
           options={{ headerShown: false }}
         />
-        <MainStack.Screen
+        <AuthStack.Screen
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
         />
-        <MainStack.Screen
+        <AuthStack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Публікації" }}
+          options={{
+            title: "Публікації",
+            headerLeft: null,
+          }}
         />
-        <MainStack.Screen name="Posts" component={PostsScreen} />
-      </MainStack.Navigator>
+      </AuthStack.Navigator>
     </NavigationContainer>
   );
 }
