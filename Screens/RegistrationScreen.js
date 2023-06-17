@@ -50,6 +50,7 @@ const RegistrationScreen = () => {
     console.log(formData);
     setFormData(emptyState);
     closeKeyboard();
+    navigation.navigate("Home", { screen: "Posts" });
   };
 
   return (
@@ -160,7 +161,15 @@ const RegistrationScreen = () => {
                 navigation.navigate("Login");
               }}
             >
-              Вже є акаунт? Увійти
+              Вже є акаунт?{" "}
+              <Text
+                style={{ textDecorationLine: "underline" }}
+                onPress={() => {
+                  navigation.navigate("Login");
+                }}
+              >
+                Увійти
+              </Text>
             </Text>
           </View>
         </View>

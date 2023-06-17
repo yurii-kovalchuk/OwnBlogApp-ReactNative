@@ -1,7 +1,11 @@
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 const PostsScreen = () => {
-  return <View></View>;
+  return (
+    <View>
+      <Text>Posts Screen</Text>
+    </View>
+  );
 };
 
 export default PostsScreen;

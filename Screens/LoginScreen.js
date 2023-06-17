@@ -48,6 +48,7 @@ const LoginScreen = () => {
     console.log(formData);
     setFormData(emptyState);
     closeKeyboard();
+    navigation.navigate("Home");
   };
 
   return (
