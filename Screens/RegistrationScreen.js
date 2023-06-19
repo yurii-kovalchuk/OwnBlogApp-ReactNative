@@ -11,6 +11,7 @@ import {
   Keyboard,
 } from "react-native";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import bg from "../images/BG.jpg";
 import AddIcon from "../icons/add.svg";
@@ -26,6 +27,8 @@ const RegistrationScreen = () => {
   const [formData, setFormData] = useState(emptyState);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const navigation = useNavigation();
 
   const onInputFocus = (e) => {
     setWhichInputFocused(
@@ -47,6 +50,7 @@ const RegistrationScreen = () => {
     console.log(formData);
     setFormData(emptyState);
     closeKeyboard();
+    navigation.navigate("Home", { screen: "Posts" });
   };
 
   return (
@@ -151,7 +155,22 @@ const RegistrationScreen = () => {
             >
               <Text style={{ color: "#ffffff" }}>Зареєструватися</Text>
             </TouchableOpacity>
-            <Text style={styles.subText}>Вже є акаунт? Увійти</Text>
+            <Text
+              style={styles.subText}
+              onPress={() => {
+                navigation.navigate("Login");
+              }}
+            >
+              Вже є акаунт?{" "}
+              <Text
+                style={{ textDecorationLine: "underline" }}
+                onPress={() => {
+                  navigation.navigate("Login");
+                }}
+              >
+                Увійти
+              </Text>
+            </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>
