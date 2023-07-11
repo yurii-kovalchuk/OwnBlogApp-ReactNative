@@ -16,11 +16,13 @@ const Home = () => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          justifyContent: "center",
           paddingHorizontal: 82,
           paddingTop: 9,
         },
-        // tabBarItemStyle: { height: 40 },
+        tabBarItemStyle: {
+          justifyContent: "center",
+          height: 40,
+        },
       }}
     >
       <Tab.Screen
@@ -32,8 +34,8 @@ const Home = () => {
             <PostsIcon name="posts" size={size} color={color} />
           ),
           tabBarItemStyle: {
-            height: 40,
-            maxWidth: 40,
+            // height: 40,
+            // maxWidth: 40,
           },
         }}
       />
@@ -46,8 +48,11 @@ const Home = () => {
             <Cross name="cross" size={size} color={color} />
           ),
           tabBarItemStyle: {
-            height: 40,
-            maxWidth: 70,
+            // height: 40,
+            // maxWidth: 70,
+            // width: 70,
+            // minWidth: 70,
+            paddingHorizontal: 11,
             marginHorizontal: 31,
             borderRadius: 100,
             backgroundColor: "#FF6C00",
@@ -63,8 +68,8 @@ const Home = () => {
             <ProfileIcon name="profile" size={size} color={color} />
           ),
           tabBarItemStyle: {
-            height: 40,
-            maxWidth: 40,
+            // height: 40,
+            // maxWidth: 40,
           },
         }}
       />
